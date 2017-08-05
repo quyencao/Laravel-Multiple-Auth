@@ -59,4 +59,16 @@ class AdminLoginController extends Controller
 
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+
+    public function guard()
+    {
+        return Auth::guard('admin');
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect('/');
+    }
 }
